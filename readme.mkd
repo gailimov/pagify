@@ -1,0 +1,106 @@
+Pagify
+======
+
+Pagify is a PHP library for creating pagination links for a collection of objects.
+
+Example usage:
+
+	$pagify = new Pagify();
+	$config = array(
+	  'total'    => 30,
+	   'url'      => 'posts/?page=',
+	   'page'     => 2,
+	   'per_page' => 5
+	);
+	$pagify->initialize($config);
+	echo $pagify->get_links();`
+
+This example would output:
+
+`first < 1 2 3 4 5 > last`
+
+Options
+-------
+
+<table>
+  <tr>
+    <th>Option</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>per_page</td>
+    <td>5</td>
+    <td>The number of objects on a page.</td>
+  </tr>
+  <tr>
+    <td>total</td>
+    <td>0</td>
+    <td>The total number of objects. Be sure to set this!</td>
+  </tr>
+  <tr>
+    <td>page</td>
+    <td>1</td>
+    <td>The current page</td>
+  </tr>
+  <tr>
+    <td>range</td>
+    <td>3</td>
+    <td>The number of number links to show on either side of the current page.</td>
+  </tr>
+  <tr>
+    <td>url</td>
+    <td></td>
+    <td>The url for the link elements. The page number for each link will be appended to the end of this url.</td>
+  </tr>
+  <tr>
+    <td>show_prev_next</td>
+    <td>TRUE</td>
+    <td>Should previous and next links be output by get_links()?</td>
+  </tr>
+  <tr>
+    <td>show_first_last</td>
+    <td>TRUE</td>
+    <td>Should first and last links be output by get_links()?</td>
+  </tr>
+  <tr>
+    <td>show_numbers</td>
+    <td>TRUE</td>
+    <td>Should number links be output by get_links()?</td>
+  </tr>
+  <tr>
+    <td>separator</td>
+    <td>(space)</td>
+    <td>The string that should be used between links.</td>
+  </tr>
+  <tr>
+    <td>tag_open</td>
+    <td>&lt;div class="pagination"&gt;</td>
+    <td>Opening tag of HTML used to wrap the pagination links from get_links().</td>
+  </tr>
+  <tr>
+    <td>tag_close</td>
+    <td>&lt;/div&gt;</td>
+    <td>Closing tag of HTML used to wrap the pagination links from get_links().</td>
+  </tr>
+  <tr>
+    <td>prev_link_text</td>
+    <td>&amp;lt;</td>
+    <td>Text for the "previous" link</td>
+  </tr>
+  <tr>
+    <td>next_link_text</td>
+    <td>&amp;gt;</td>
+    <td>Text for the "next" link</td>
+  </tr>
+  <tr>
+    <td>first_link_text</td>
+    <td>first</td>
+    <td>Text for the "first" link</td>
+  </tr>
+  <tr>
+    <td>last_link_text</td>
+    <td>last</td>
+    <td>Text for the "last" link</td>
+  </tr>
+</table>
