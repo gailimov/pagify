@@ -17,7 +17,7 @@ Example usage:
 
 This example would output:
 
-`first < 1 2 3 4 5 > last`
+<div class="pagination"><a href="posts/?page=/1">first</a> <a href="posts/?page=/1">&lt;</a> <a href="posts/?page=/1">1</a> <strong>2</strong> <a href="posts/?page=/3">3</a> <a href="posts/?page=/4">4</a> <a href="posts/?page=/5">5</a> <a href="posts/?page=/3">&gt;</a> <a href="posts/?page=/6">last</a></div>
 
 Options
 -------
