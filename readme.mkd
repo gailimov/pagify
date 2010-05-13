@@ -86,21 +86,61 @@ Options
   <tr>
     <td>prev_link_text</td>
     <td>&amp;lt;</td>
-    <td>Text for the "previous" link</td>
+    <td>Text for the "previous" link.</td>
+  </tr>
+  <tr>
+    <td>prev_link_tag_open</td>
+    <td>&lt;span id="prev_link"&gt;</td>
+    <td>Opening tag of HTML used to wrap the "previous" link.</td>
+  </tr>
+  <tr>
+    <td>prev_link_tag_close</td>
+    <td>&lt;/span&gt;</td>
+    <td>Closing tag of HTML used to wrap the "previous" link.</td>
   </tr>
   <tr>
     <td>next_link_text</td>
     <td>&amp;gt;</td>
-    <td>Text for the "next" link</td>
+    <td>Text for the "next" link.</td>
+  </tr>
+  <tr>
+    <td>next_link_tag_open</td>
+    <td>&lt;span id="next_link"&gt;</td>
+    <td>Opening tag of HTML used to wrap the "next" link.</td>
+  </tr>
+  <tr>
+    <td>next_link_tag_close</td>
+    <td>&lt;/span&gt;</td>
+    <td>Closing tag of HTML used to wrap the "next" link.</td>
   </tr>
   <tr>
     <td>first_link_text</td>
     <td>first</td>
-    <td>Text for the "first" link</td>
+    <td>Text for the "first" link.</td>
+  </tr>
+  <tr>
+    <td>first_link_tag_open</td>
+    <td>&lt;span id="first_link"&gt;</td>
+    <td>Opening tag of HTML used to wrap the "first" link.</td>
+  </tr>
+  <tr>
+    <td>first_link_tag_close</td>
+    <td>&lt;/span&gt;</td>
+    <td>Closing tag of HTML used to wrap the "first" link.</td>
   </tr>
   <tr>
     <td>last_link_text</td>
     <td>last</td>
-    <td>Text for the "last" link</td>
+    <td>Text for the "last" link.</td>
+  </tr>
+  <tr>
+    <td>last_link_tag_open</td>
+    <td>&lt;span id="last_link"&gt;</td>
+    <td>Opening tag of HTML used to wrap the "last" link.</td>
+  </tr>
+  <tr>
+    <td>last_link_tag_close</td>
+    <td>&lt;/span&gt;</td>
+    <td>Closing tag of HTML used to wrap the "last" link.</td>
   </tr>
 </table>
