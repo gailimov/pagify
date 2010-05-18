@@ -6,7 +6,7 @@
  * @package		default
  * @author 		Seth Baur
  * @license		http://creativecommons.org/licenses/BSD/
- * @version		0.1
+ * @version		1.0
  * 
  *
  **/
