@@ -288,6 +288,26 @@ class Pagify
     }
     
     // ---------------------------------------------------------------
+
+    /**
+     * output which items are showing on the page, and how many there are in total
+     *
+     * @access    public 
+     * @param    void
+     * @return    void
+     **/
+    public function create_showing()
+    {
+        $first = $this->get_offset() + 1;
+        $last = $first + $this->per_page - 1;
+        if ($last > $this->total) 
+        {
+            $last = $this->total;
+        }
+        return "Showing " . $first . "-" . $last . " of " . $this->total;
+    }
+    
+    // ---------------------------------------------------------------
     
     /**
      * make sure url has a trailing /
