@@ -143,4 +143,24 @@ Options
     <td>&lt;/span&gt;</td>
     <td>Closing tag of HTML used to wrap the "last" link.</td>
   </tr>
+  <tr>
+    <td>num_link_tag_open</td>
+    <td>(nothing)</td>
+    <td>Opening tag of HTML used to wrap the num links</td>
+  </tr>
+  <tr>
+    <td>num_link_tag_close</td>
+    <td>(nothing)</td>
+    <td>Closing tag of HTML used to wrap the num links</td>
+  </tr>
+  <tr>
+    <td>current_page_link_tag_open</td>
+    <td>&lt;strong&gt;</td>
+    <td>Opening tag of HTML used to wrap the current page link</td>
+  </tr>
+  <tr>
+    <td>current_page_link_tag_close</td>
+    <td>&lt;/strong&gt;</td>
+    <td>Closing tag of HTML used to wrap the current page link</td>
+  </tr>
 </table>

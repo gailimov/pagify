@@ -4,7 +4,7 @@
  * Pagination class 
  *
  * @package		default
- * @author 		Seth Baur
+ * @author 		Seth Baur, Kanat Gailimov <gailimov@gmail.com>
  * @license		http://creativecommons.org/licenses/BSD/
  * @version		0.1
  * 
@@ -95,6 +95,10 @@ class Pagify
     private $last_link_text = 'last';
     private $last_link_tag_open = '<span id="last_link">';
     private $last_link_tag_close = '</span>';
+    private $num_link_tag_open = '';
+    private $num_link_tag_close = '';
+    private $current_page_link_tag_open = '<strong>';
+    private $current_page_link_tag_close = '</strong>';
     
     // ---------------------------------------------------------------
     
@@ -164,27 +168,27 @@ class Pagify
             // number links before current page
             if ($this->page - $this->range > 0) {
                 for ($i = $this->page - $this->range; $i < $this->page; $i++) { 
-                    $links[] = '<a href="' . $this->url.$i . '">' . $i . '</a>';
+                    $links[] = $this->num_link_tag_open . '<a href="' . $this->url.$i . '">' . $i . '</a>' . $this->num_link_tag_close;
                 }
             }
             else {
                 for ($i = 1; $i < $this->page; $i++) { 
-                    $links[] = '<a href="' . $this->url.$i . '">' . $i . '</a>';
+                    $links[] = $this->num_link_tag_open . '<a href="' . $this->url.$i . '">' . $i . '</a>' . $this->num_link_tag_close;
                 }
             }
 
             // current page
-            $links[] = '<strong>' . $this->page . '</strong>';
+            $links[] = $this->current_page_link_tag_open . $this->page . $this->current_page_link_tag_close;
 
             // number links after current page
             if ($this->page + $this->range <= $this->last_page_number) {
                 for ($i = $this->page + 1; $i <= $this->page + $this->range; $i++) { 
-                    $links[] = '<a href="' . $this->url.$i . '">' . $i . '</a>';
+                    $links[] = $this->num_link_tag_open . '<a href="' . $this->url.$i . '">' . $i . '</a>' . $this->num_link_tag_close;
                 }
             }
             else {
                 for ($i = $this->page + 1; $i <= $this->last_page_number; $i++) { 
-                    $links[] = '<a href="' . $this->url.$i . '">' . $i . '</a>';
+                    $links[] = $this->num_link_tag_open . '<a href="' . $this->url.$i . '">' . $i . '</a>' . $this->num_link_tag_close;
                 }
             }
         }
