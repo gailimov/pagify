@@ -1,13 +1,13 @@
-<?php  
+<?php
 
 /**
- * Pagination class 
+ * Pagination class
  *
- * @package		default
- * @author 		Seth Baur, Kanat Gailimov <gailimov@gmail.com>
- * @license		http://creativecommons.org/licenses/BSD/
- * @version		0.1
- * 
+ * @package     default
+ * @author      Seth Baur, Kanat Gailimov <gailimov@gmail.com>
+ * @license     http://creativecommons.org/licenses/BSD/
+ * @version     0.1
+ *
  *
  **/
 class Pagify
@@ -18,21 +18,21 @@ class Pagify
      * @var int
      */
     private $per_page = 5;
-    
+
     /**
      * the total number of items
      *
      * @var int
      **/
     private $total = 0;
-    
+
     /**
      * the current page
      *
      * @var int
      **/
     private $page = 1;
-    
+
     /**
      * how many page numbers to show before and after
      * the current page
@@ -40,42 +40,42 @@ class Pagify
      * @var int
      **/
     private $range = 3;
-    
+
     /**
      * the url to link to
      *
      * @var string
      **/
     private $url = '';
-    
+
     /**
      * show previous and next buttons
      *
      * @var bool
      **/
     private $show_prev_next = TRUE;
-    
+
     /**
      * show first and last buttons
      *
      * @var bool
      **/
     private $show_first_last = TRUE;
-    
+
     /**
      * show number links
      *
      * @var bool
      **/
     private $show_numbers = TRUE;
-    
+
     /**
      * last page number
      *
      * @var int
      **/
     private $last_page_number;
-    
+
     /**
      * Template variables
      *
@@ -83,10 +83,10 @@ class Pagify
     private $separator = ' ';
     private $tag_open = '<div class="pagination">';
     private $tag_close = '</div>';
-    private $prev_link_text = '&lt;';     
+    private $prev_link_text = '&lt;';
     private $prev_link_tag_open = '<span id="prev_link">';
     private $prev_link_tag_close = '</span>';
-    private $next_link_text = '&gt;';     
+    private $next_link_text = '&gt;';
     private $next_link_tag_open = '<span id="next_link">';
     private $next_link_tag_close = '</span>';
     private $first_link_text = 'first';
@@ -99,52 +99,49 @@ class Pagify
     private $num_link_tag_close = '';
     private $current_page_link_tag_open = '<strong>';
     private $current_page_link_tag_close = '</strong>';
-    
+
     // ---------------------------------------------------------------
-    
+
     /**
      * constructor
      *
-     * @access    public 
+     * @access    public
      * @param    void
      * @return    void
      **/
     public function __construct($config = array())
     {
-		$this->initialize($config);
+        $this->initialize($config);
     }
-    
+
     // ---------------------------------------------------------------
-    
+
     /**
-	 * initialize config
-	 *
-	 * @access	public
-	 * @param	array config
-	 * @return	void
-	 */
-	function initialize($config = array())
-	{
-		foreach ($config as $key => $val)
-		{
-		    if (method_exists($this, 'set_'.$key)) {
-		        $this->{'set_'.$key}($val);
-		    }
-			else if (isset($this->$key))
-			{
-				$this->$key = $val;
-			}
-		}
-		
-		$this->last_page_number = ceil($this->total / $this->per_page);
-	}
-    
+     * initialize config
+     *
+     * @access  public
+     * @param   array config
+     * @return  void
+     */
+    function initialize($config = array())
+    {
+        foreach ($config as $key => $val)
+        {
+            if (isset($this->$key))
+            {
+                $this->$key = $val;
+            }
+        }
+
+        $this->last_page_number = ceil($this->total / $this->per_page);
+    }
+
     // ---------------------------------------------------------------
-    
+
     /**
      * get current links
      *
-     * @access    public 
+     * @access    public
      * @param    void
      * @return    string
      **/
@@ -152,27 +149,27 @@ class Pagify
     {
         $output = $this->tag_open;
         $links = array();
-        
+
         // first and previous page links, if applicable
         if ($this->page > 1) {
             if ($this->show_first_last) {
                 $links[] = $this->get_first_link();
             }
-            
+
             if ($this->show_prev_next) {
                 $links[] = $this->get_prev_link();
             }
         }
-        
+
         if ($this->show_numbers) {
             // number links before current page
             if ($this->page - $this->range > 0) {
-                for ($i = $this->page - $this->range; $i < $this->page; $i++) { 
+                for ($i = $this->page - $this->range; $i < $this->page; $i++) {
                     $links[] = $this->num_link_tag_open . '<a href="' . $this->url.$i . '">' . $i . '</a>' . $this->num_link_tag_close;
                 }
             }
             else {
-                for ($i = 1; $i < $this->page; $i++) { 
+                for ($i = 1; $i < $this->page; $i++) {
                     $links[] = $this->num_link_tag_open . '<a href="' . $this->url.$i . '">' . $i . '</a>' . $this->num_link_tag_close;
                 }
             }
@@ -182,39 +179,39 @@ class Pagify
 
             // number links after current page
             if ($this->page + $this->range <= $this->last_page_number) {
-                for ($i = $this->page + 1; $i <= $this->page + $this->range; $i++) { 
+                for ($i = $this->page + 1; $i <= $this->page + $this->range; $i++) {
                     $links[] = $this->num_link_tag_open . '<a href="' . $this->url.$i . '">' . $i . '</a>' . $this->num_link_tag_close;
                 }
             }
             else {
-                for ($i = $this->page + 1; $i <= $this->last_page_number; $i++) { 
+                for ($i = $this->page + 1; $i <= $this->last_page_number; $i++) {
                     $links[] = $this->num_link_tag_open . '<a href="' . $this->url.$i . '">' . $i . '</a>' . $this->num_link_tag_close;
                 }
             }
         }
-        
-        // show next and last page link, if applicable 
+
+        // show next and last page link, if applicable
         if ($this->page < $this->last_page_number) {
             if ($this->show_prev_next) {
                 $links[] = $this->get_next_link();
             }
-            
+
             if ($this->show_first_last) {
                 $links[] = $this->get_last_link();
             }
         }
-        
+
         $output .= implode($this->separator, $links);
         $output .= $this->tag_close;
         return $output;
     }
-    
+
     // ---------------------------------------------------------------
-    
+
     /**
      * get current offset
      *
-     * @access    public 
+     * @access    public
      * @param    void
      * @return    int
      **/
@@ -222,13 +219,13 @@ class Pagify
     {
         return ($this->per_page * $this->page) - $this->per_page;
     }
-    
+
     // ---------------------------------------------------------------
-    
+
     /**
      * get the first page link
      *
-     * @access    public 
+     * @access    public
      * @param    void
      * @return    string
      **/
@@ -236,13 +233,13 @@ class Pagify
     {
         return $this->first_link_tag_open.'<a href="'.$this->url.'1">'.$this->first_link_text.'</a>'.$this->first_link_tag_close;
     }
-    
+
     // ---------------------------------------------------------------
-    
+
     /**
      * get the last page link
      *
-     * @access    public 
+     * @access    public
      * @param    void
      * @return    void
      **/
@@ -250,13 +247,13 @@ class Pagify
     {
         return $this->last_link_tag_open.'<a href="'.$this->url.$this->last_page_number.'">'.$this->last_link_text.'</a>'.$this->last_link_tag_close;
     }
-    
+
     // ---------------------------------------------------------------
-    
+
     /**
      * get the previous page link
      *
-     * @access    public 
+     * @access    public
      * @param    void
      * @return    string
      **/
@@ -270,13 +267,13 @@ class Pagify
         $link .= $this->prev_link_tag_close;
         return $link;
     }
-    
+
     // ---------------------------------------------------------------
-    
+
     /**
      * get the next page link
      *
-     * @access    public 
+     * @access    public
      * @param    void
      * @return    void
      **/
@@ -290,13 +287,13 @@ class Pagify
         $link .= $this->next_link_tag_close;
         return $link;
     }
-    
+
     // ---------------------------------------------------------------
 
     /**
      * output which items are showing on the page, and how many there are in total
      *
-     * @access    public 
+     * @access    public
      * @param    void
      * @return    void
      **/
@@ -304,30 +301,13 @@ class Pagify
     {
         $first = $this->get_offset() + 1;
         $last = $first + $this->per_page - 1;
-        if ($last > $this->total) 
+        if ($last > $this->total)
         {
             $last = $this->total;
         }
         return "Showing " . $first . "-" . $last . " of " . $this->total;
     }
-    
-    // ---------------------------------------------------------------
-    
-    /**
-     * make sure url has a trailing /
-     *
-     * @access    public 
-     * @param    string
-     * @return    void
-     **/
-    public function set_url($url)
-    {
-        if (substr($url,-1) != '/') {
-            $url .= '/';
-        }
-        $this->url = $url;
-    }
-    
+
     // ---------------------------------------------------------------
 }
 
