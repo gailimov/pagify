@@ -217,6 +217,9 @@ class Pagify
      **/
     public function get_offset()
     {
+        if ($this->page > $this->last_page_number) {
+            $this->page = $this->last_page_number;
+        }
         return ($this->per_page * $this->page) - $this->per_page;
     }
 
